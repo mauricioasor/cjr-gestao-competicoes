@@ -1,0 +1,146 @@
+import React, { createContext, useContext, useEffect, useReducer, useState, useCallback } from 'react'
+import {
+  LayoutDashboard, SlidersHorizontal, Users, GitFork, Gavel, ShieldCheck, ScrollText, Webhook, Trophy, RotateCcw, CheckCircle2,
+} from 'lucide-react'
+import { initialState, reducer } from './state/store.js'
+import { USERS } from './data/seed.js'
+import { cx } from './components/ui.jsx'
+import Painel from './views/Painel.jsx'
+import Configuracao from './views/Configuracao.jsx'
+import Inscricoes from './views/Inscricoes.jsx'
+import Chaveamento from './views/Chaveamento.jsx'
+import Juiz from './views/Juiz.jsx'
+import Homologacao from './views/Homologacao.jsx'
+import Auditoria from './views/Auditoria.jsx'
+import Integracoes from './views/Integracoes.jsx'
+import Placar from './views/Placar.jsx'
+
+const Ctx = createContext(null)
+export const useApp = () => useContext(Ctx)
+
+const VIEWS = {
+  painel: { label: 'Visão geral', icon: LayoutDashboard, C: Painel },
+  config: { label: 'Configuração', icon: SlidersHorizontal, C: Configuracao },
+  inscricoes: { label: 'Inscrições', icon: Users, C: Inscricoes },
+  chaveamento: { label: 'Chaveamento', icon: GitFork, C: Chaveamento },
+  juiz: { label: 'Painel do juiz', icon: Gavel, C: Juiz },
+  homologacao: { label: 'Homologação', icon: ShieldCheck, C: Homologacao },
+  auditoria: { label: 'Auditoria', icon: ScrollText, C: Auditoria },
+  integracoes: { label: 'Integrações', icon: Webhook, C: Integracoes },
+  placar: { label: 'Placar público', icon: Trophy, C: Placar },
+}
+const NAV = {
+  coord: ['painel', 'config', 'inscricoes', 'chaveamento', 'homologacao', 'auditoria', 'integracoes', 'placar'],
+  juiz: ['juiz', 'placar'],
+  prof: ['inscricoes', 'placar'],
+  publico: ['placar'],
+}
+const ROLE_LABEL = { coord: 'Coordenação', juiz: 'Juiz', prof: 'Professor(a)', publico: 'Público' }
+
+function Logo() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 2.5 28 9.25v13.5L16 29.5 4 22.75V9.25z" fill="rgb(var(--primary))" />
+      <path d="M16 9.5 22 13v6l-6 3.5-6-3.5v-6z" fill="none" stroke="rgb(var(--primary-ink))" strokeWidth="2" />
+      <circle cx="16" cy="16" r="2" fill="rgb(var(--primary-ink))" />
+    </svg>
+  )
+}
+
+export default function App() {
+  const [state, dispatch] = useReducer(reducer, undefined, initialState)
+  const [view, setView] = useState('painel')
+  const [toast, setToast] = useState(null)
+
+  const notify = useCallback((msg) => {
+    setToast({ msg, k: Date.now() })
+  }, [])
+  useEffect(() => {
+    if (!toast) return
+    const t = setTimeout(() => setToast(null), 3200)
+    return () => clearTimeout(t)
+  }, [toast])
+
+  const setRole = (role) => {
+    dispatch({ type: 'SET_ROLE', role })
+    setView(NAV[role][0])
+  }
+  const nav = NAV[state.role]
+  const current = nav.includes(view) ? view : nav[0]
+  const View = VIEWS[current].C
+  const pendentes = state.avaliacoes.filter((a) => a.status === 'pendente').length
+  const user = USERS[state.role]
+
+  return (
+    <Ctx.Provider value={{ state, dispatch, notify, go: setView }}>
+      <div className="min-h-screen bg-bg">
+        <header className="sticky top-0 z-30 border-b border-line bg-surface/95 backdrop-blur" style={{ top: 'env(safe-area-inset-top, 0px)' }}>
+          <div className="mx-auto flex max-w-[1320px] flex-wrap items-center gap-x-4 gap-y-2 py-2.5" style={{ paddingLeft: 'max(16px, env(safe-area-inset-left, 0px))', paddingRight: 'max(16px, env(safe-area-inset-right, 0px))' }}>
+            <div className="flex min-w-0 items-center gap-2.5">
+              <Logo />
+              <div className="min-w-0 leading-tight">
+                <p className="truncate font-display text-[17px] font-semibold">CJR · Gestão das Competições</p>
+                <p className="truncate text-[12px] text-muted">{state.edicao.nome} · Secretaria de Educação de Joinville</p>
+              </div>
+            </div>
+            <span className="hidden rounded bg-warn-soft px-2 py-0.5 text-[11.5px] font-semibold text-warn md:inline">Protótipo · dados fictícios</span>
+            <div className="ml-auto flex items-center gap-2">
+              <span className="hidden text-[12px] text-muted lg:inline">Ver como</span>
+              <div role="radiogroup" aria-label="Perfil de acesso" className="flex rounded-md border border-line bg-sunken p-0.5">
+                {Object.keys(NAV).map((r) => (
+                  <button key={r} role="radio" aria-checked={state.role === r} onClick={() => setRole(r)}
+                    className={cx('rounded px-2.5 py-1 text-[12.5px] font-semibold transition', state.role === r ? 'bg-surface text-primary shadow-sm' : 'text-muted hover:text-ink')}>
+                    {ROLE_LABEL[r]}
+                  </button>
+                ))}
+              </div>
+              <button onClick={() => { dispatch({ type: 'RESET' }); notify('Demo reiniciada com os dados iniciais') }} className="rounded-md p-2 text-muted hover:bg-sunken hover:text-ink" title="Reiniciar demo" aria-label="Reiniciar demo">
+                <RotateCcw size={17} />
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <div className="mx-auto flex max-w-[1320px] flex-col gap-5 py-5 lg:flex-row" style={{ paddingLeft: 'max(16px, env(safe-area-inset-left, 0px))', paddingRight: 'max(16px, env(safe-area-inset-right, 0px))' }}>
+          <nav aria-label="Seções" className="lg:sticky lg:top-[76px] lg:w-56 lg:shrink-0 lg:self-start">
+            <div className="mb-3 hidden rounded-lg border border-line bg-surface p-3 lg:block">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">Conectado como</p>
+              <p className="mt-1 font-semibold">{user.nome}</p>
+              <p className="text-[12.5px] text-muted">{user.papel}</p>
+            </div>
+            <ul className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 lg:flex-col lg:overflow-visible">
+              {nav.map((k) => {
+                const V = VIEWS[k]
+                const active = k === current
+                return (
+                  <li key={k} className="shrink-0">
+                    <button onClick={() => setView(k)} aria-current={active ? 'page' : undefined}
+                      className={cx('flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-left text-[14px] font-medium transition',
+                        active ? 'bg-primary-soft text-primary' : 'text-ink hover:bg-sunken')}>
+                      <V.icon size={17} aria-hidden="true" />
+                      <span className="whitespace-nowrap">{V.label}</span>
+                      {k === 'homologacao' && pendentes > 0 && (
+                        <span className="ml-auto rounded-full bg-warn px-1.5 text-[11.5px] font-bold text-surface tnum" aria-label={`${pendentes} pendentes`}>{pendentes}</span>
+                      )}
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+          <main className="min-w-0 flex-1" key={current + state.role}>
+            <View />
+          </main>
+        </div>
+
+        {toast && (
+          <div className="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-4" style={{ marginBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+            <div key={toast.k} className="toast flex max-w-[560px] items-center gap-2 rounded-lg bg-ink px-4 py-3 text-[14px] font-medium text-bg shadow-xl" role="status">
+              <CheckCircle2 size={18} className="shrink-0" aria-hidden="true" /> {toast.msg}
+            </div>
+          </div>
+        )}
+      </div>
+    </Ctx.Provider>
+  )
+}
