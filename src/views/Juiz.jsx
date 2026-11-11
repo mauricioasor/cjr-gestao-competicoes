@@ -173,10 +173,10 @@ export default function Juiz() {
   return (
     <div>
       <PageHeader eyebrow={`${USERS.juiz.nome} · juiz voluntário`} title="Painel do juiz">
-        Lance as notas da arena. Você não homologa os próprios lançamentos: a coordenação revisa antes de publicar.
+        Lance as notas da arena nas categorias do seu convite. Você não homologa os próprios lançamentos: a coordenação revisa antes de publicar.
       </PageHeader>
       <div className="mb-4 flex gap-1 overflow-x-auto rounded-lg border border-line bg-surface p-1">
-        {state.categorias.map((c) => (
+        {state.categorias.filter((c) => USERS.juiz.categorias.includes(c.id)).map((c) => (
           <button key={c.id} onClick={() => setSel(c.id)} aria-pressed={c.id === sel}
             className={cx('shrink-0 rounded-md px-3 py-1.5 text-[13.5px] font-medium', c.id === sel ? 'bg-primary-soft font-semibold text-primary' : 'text-muted hover:bg-sunken hover:text-ink')}>{c.nome}</button>
         ))}

@@ -24,12 +24,14 @@ export const ESCOLAS = [
   { id: 'esc-10', nome: 'EM Prof. Arno Kessler' },
   { id: 'esc-11', nome: 'EM Parque das Bromélias' },
   { id: 'esc-12', nome: 'Núcleo EJA Nova Esperança' },
+  { id: 'esc-13', nome: 'EM Prof. Rui Hasse' },
+  { id: 'esc-14', nome: 'EM Vila do Ribeirão' },
 ]
 
 export const USERS = {
-  coord: { id: 'usr-coord-07', nome: 'Ana Ribeiro', papel: 'Coordenação do CJR' },
-  juiz: { id: 'usr-juiz-12', nome: 'Carlos Menezes', papel: 'Juiz voluntário' },
-  prof: { id: 'usr-prof-31', nome: 'Prof.ª Júlia Prado', papel: 'Professora responsável', escolaId: 'esc-02' },
+  coord: { id: 'usr-coord-07', nome: 'Ana Ribeiro', papel: 'Coordenação do CJR', email: 'ana.ribeiro@sed.example.gov.br', escopo: '7º CJR · todas as categorias' },
+  juiz: { id: 'usr-juiz-12', nome: 'Carlos Menezes', papel: 'Juiz voluntário', email: 'carlos.menezes@example.com', escopo: 'Estoura Balão, Robótica Lego, Seguidor de Linha', categorias: ['estoura-balao', 'robotica-lego', 'seguidor-linha'] },
+  prof: { id: 'usr-prof-31', nome: 'Prof.ª Júlia Prado', papel: 'Professora responsável', escolaId: 'esc-02', email: 'julia.prado@escola.example.gov.br', escopo: 'EM Jardim das Araucárias · 7º CJR' },
   publico: { id: 'publico', nome: 'Público', papel: 'Placar aberto, sem login' },
 }
 export const OUTRO_JUIZ = { id: 'usr-juiz-04', nome: 'Beatriz Lima' }
@@ -213,13 +215,28 @@ export const AVALIACOES = [
 
 export const AUDITORIA = [
   { id: 'aud-003', em: hora(-60), ator: USERS.coord.nome, acao: 'Abriu as disputas', entidade: 'Edição', ref: EDICAO.id, detalhe: 'Regras v1 congeladas em todas as categorias' },
-  { id: 'aud-002', em: hora(-24 * 60), ator: 'Integração · Desafio 01', acao: 'Sincronizou dados mestres', entidade: 'Edição', ref: EDICAO.id, detalhe: '12 escolas e dados da edição recebidos' },
+  { id: 'aud-002', em: hora(-24 * 60), ator: 'Integração · Desafio 01', acao: 'Sincronizou dados mestres', entidade: 'Edição', ref: EDICAO.id, detalhe: '14 escolas e dados da edição recebidos' },
   { id: 'aud-001', em: hora(-26 * 60), ator: USERS.coord.nome, acao: 'Publicou regras v1', entidade: 'Regras', ref: 'todas', detalhe: '7 categorias configuradas' },
 ]
 
 export const EVENTOS = [
   {
     id: 'evt-001', tipo: 'edicao.atualizada', direcao: 'entrada', origem: 'Desafio 01', em: hora(-24 * 60), status: 'processado',
-    payload: { evento: 'edicao.atualizada', edicao_id: EDICAO.id, ano: EDICAO.ano, escolas: 12 },
+    payload: { evento: 'edicao.atualizada', edicao_id: EDICAO.id, ano: EDICAO.ano, escolas: 14 },
   },
+]
+
+// --- acessos por edição (convites com escopo) -------------------------------
+// Acesso é por PESSOA, vinculado a uma escola ou a categorias, e expira com a edição.
+const RESP = ['Helena Duarte', 'Júlia Prado', 'Renata Oliveira', 'Paulo Schmidt', 'Luana Costa', 'Diego Ramos', 'Sônia Krüger', 'André Lopes', 'Fernanda Melo', 'Tiago Bauer', 'Camila Reis', 'Marta Vogel', 'Bruno Seidel', '']
+const STATUS = ['aceito', 'aceito', 'aceito', 'aceito', 'aceito', 'aceito', 'aceito', 'aceito', 'aceito', 'aceito', 'aceito', 'aceito', 'enviado', 'nao-convidado']
+const slug = (n) => n.toLowerCase().normalize('NFD').replace(/[^a-z ]/g, '').replace(' ', '.')
+export const ACESSOS_ESCOLAS = ESCOLAS.map((e, i) => {
+  const responsavel = RESP[i]
+  return { escolaId: e.id, responsavel, email: responsavel ? `${slug(responsavel)}@escola.example.gov.br` : '', status: STATUS[i] }
+})
+export const ACESSOS_JUIZES = [
+  { id: 'usr-juiz-12', nome: 'Carlos Menezes', email: 'carlos.menezes@example.com', categorias: ['estoura-balao', 'robotica-lego', 'seguidor-linha'], status: 'aceito' },
+  { id: 'usr-juiz-04', nome: 'Beatriz Lima', email: 'beatriz.lima@example.com', categorias: ['robotica-lego', 'atto-microbit', 'artbot-junior', 'artbot-expert', 'tec-educacional'], status: 'aceito' },
+  { id: 'usr-juiz-15', nome: 'Rafael Nunes', email: 'rafael.nunes@example.com', categorias: ['seguidor-linha', 'estoura-balao'], status: 'enviado' },
 ]

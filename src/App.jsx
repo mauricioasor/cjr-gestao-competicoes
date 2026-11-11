@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useReducer, useState, useCallback } from 'react'
 import {
-  LayoutDashboard, SlidersHorizontal, Users, GitFork, Gavel, ShieldCheck, ScrollText, Webhook, Trophy, RotateCcw, CheckCircle2,
+  LayoutDashboard, SlidersHorizontal, Users, GitFork, Gavel, ShieldCheck, ScrollText, Webhook, Trophy, RotateCcw, CheckCircle2, KeyRound, LogOut, LogIn,
 } from 'lucide-react'
 import { initialState, reducer } from './state/store.js'
 import { USERS } from './data/seed.js'
@@ -14,6 +14,8 @@ import Homologacao from './views/Homologacao.jsx'
 import Auditoria from './views/Auditoria.jsx'
 import Integracoes from './views/Integracoes.jsx'
 import Placar from './views/Placar.jsx'
+import Entrada from './views/Entrada.jsx'
+import Acessos from './views/Acessos.jsx'
 
 const Ctx = createContext(null)
 export const useApp = () => useContext(Ctx)
@@ -21,6 +23,7 @@ export const useApp = () => useContext(Ctx)
 const VIEWS = {
   painel: { label: 'Visão geral', icon: LayoutDashboard, C: Painel },
   config: { label: 'Configuração', icon: SlidersHorizontal, C: Configuracao },
+  acessos: { label: 'Acessos', icon: KeyRound, C: Acessos },
   inscricoes: { label: 'Inscrições', icon: Users, C: Inscricoes },
   chaveamento: { label: 'Chaveamento', icon: GitFork, C: Chaveamento },
   juiz: { label: 'Painel do juiz', icon: Gavel, C: Juiz },
@@ -30,12 +33,11 @@ const VIEWS = {
   placar: { label: 'Placar público', icon: Trophy, C: Placar },
 }
 const NAV = {
-  coord: ['painel', 'config', 'inscricoes', 'chaveamento', 'homologacao', 'auditoria', 'integracoes', 'placar'],
+  coord: ['painel', 'config', 'acessos', 'inscricoes', 'chaveamento', 'homologacao', 'auditoria', 'integracoes', 'placar'],
   juiz: ['juiz', 'placar'],
   prof: ['inscricoes', 'placar'],
   publico: ['placar'],
 }
-const ROLE_LABEL = { coord: 'Coordenação', juiz: 'Juiz', prof: 'Professor(a)', publico: 'Público' }
 
 function Logo() {
   return (
@@ -61,9 +63,10 @@ export default function App() {
     return () => clearTimeout(t)
   }, [toast])
 
-  const setRole = (role) => {
-    dispatch({ type: 'SET_ROLE', role })
-    setView(NAV[role][0])
+  useEffect(() => { if (state.role) setView(NAV[state.role][0]) }, [state.role])
+
+  if (!state.role) {
+    return <Ctx.Provider value={{ state, dispatch, notify, go: setView }}><Entrada /></Ctx.Provider>
   }
   const nav = NAV[state.role]
   const current = nav.includes(view) ? view : nav[0]
@@ -85,15 +88,13 @@ export default function App() {
             </div>
             <span className="hidden rounded bg-warn-soft px-2 py-0.5 text-[11.5px] font-semibold text-warn md:inline">Protótipo · dados fictícios</span>
             <div className="ml-auto flex items-center gap-2">
-              <span className="hidden text-[12px] text-muted lg:inline">Ver como</span>
-              <div role="radiogroup" aria-label="Perfil de acesso" className="flex rounded-md border border-line bg-sunken p-0.5">
-                {Object.keys(NAV).map((r) => (
-                  <button key={r} role="radio" aria-checked={state.role === r} onClick={() => setRole(r)}
-                    className={cx('rounded px-2.5 py-1 text-[12.5px] font-semibold transition', state.role === r ? 'bg-surface text-primary shadow-sm' : 'text-muted hover:text-ink')}>
-                    {ROLE_LABEL[r]}
-                  </button>
-                ))}
+              <div className="hidden text-right leading-tight sm:block">
+                <p className="text-[13px] font-semibold">{user.nome}</p>
+                <p className="text-[11.5px] text-muted">{user.escopo || user.papel}</p>
               </div>
+              <button onClick={() => dispatch({ type: 'LOGOUT' })} className="flex items-center gap-1.5 rounded-md border border-line bg-surface px-2.5 py-1.5 text-[12.5px] font-semibold text-ink hover:bg-sunken">
+                {state.role === 'publico' ? <><LogIn size={15} />Entrar</> : <><LogOut size={15} />Trocar de conta</>}
+              </button>
               <button onClick={() => { dispatch({ type: 'RESET' }); notify('Demo reiniciada com os dados iniciais') }} className="rounded-md p-2 text-muted hover:bg-sunken hover:text-ink" title="Reiniciar demo" aria-label="Reiniciar demo">
                 <RotateCcw size={17} />
               </button>
@@ -107,6 +108,7 @@ export default function App() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">Conectado como</p>
               <p className="mt-1 font-semibold">{user.nome}</p>
               <p className="text-[12.5px] text-muted">{user.papel}</p>
+              {user.escopo && <p className="mt-2 rounded bg-sunken px-2 py-1 text-[12px] text-muted">Escopo: {user.escopo}</p>}
             </div>
             <ul className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 lg:flex-col lg:overflow-visible">
               {nav.map((k) => {

@@ -29,15 +29,29 @@ React 18, Tailwind CSS 3, ícones Lucide e Vite 5 (com `vite-plugin-singlefile`)
 
 ## Roteiro da demo (cerca de 2 min)
 
-1. **Coordenação → Configuração:** em Robótica Lego, mude um peso, escreva o motivo e publique a v2.
-2. **Inscrições → Nova inscrição:** o aluno do 5º ano é bloqueado em Seguidor de Linha (que exige do 6º ao 9º). Troque para 6º e confirme.
-3. **Chaveamento:** sorteie a chave do Estoura Balão.
-4. **Ver como Juiz:** lance os balões de um duelo e envie. Lance também a NeuroBlocos, em Robótica Lego.
-5. **Ver como Coordenação → Homologação:** homologue. O placar e a chave mudam, e o evento aparece em Integrações.
-6. **Corrigir** um resultado homologado: o motivo é obrigatório e a v2 aparece na Auditoria com o valor antes e depois.
-7. **Placar público → Modo telão.**
+0. **Tela de entrada:** escolha uma conta de demonstração e clique em "Enviar link de acesso" e depois em "Abrir link de acesso". Não há senha: o acesso é um link enviado ao e-mail convidado (simulado).
+1. **Ana (Coordenação) → Configuração:** em Robótica Lego, mude um peso, escreva o motivo e publique a v2.
+2. **Acessos:** veja as escolas convidadas para a edição e convide um juiz só para as categorias que ele vai avaliar.
+3. **Inscrições → Nova inscrição:** o aluno do 5º ano é bloqueado em Seguidor de Linha (que exige do 6º ao 9º). Troque para 6º e confirme.
+4. **Chaveamento:** sorteie a chave do Estoura Balão.
+5. **Trocar de conta → Carlos (Juiz):** ele só vê as 3 categorias do convite. Lance os balões de um duelo e envie.
+6. **Trocar de conta → Ana → Homologação:** homologue. O placar e a chave mudam, e o evento aparece em Integrações.
+7. **Corrigir** um resultado homologado: o motivo é obrigatório e a v2 aparece na Auditoria.
+8. **Placar público → Modo telão.**
 
-O botão ↺ no topo reinicia a demo.
+O botão ↺ no topo reinicia os dados da demo.
+
+## Modelo de acesso
+
+| Perfil | Quem cria o acesso | Escopo | Validade |
+| --- | --- | --- | --- |
+| Super Admin (Secretaria) | Implantação | Todas as edições | Permanente |
+| Coordenação | Super Admin | A edição | Por edição |
+| Professor responsável | Coordenação, um convite por escola | Só a própria escola | Encerra com a edição |
+| Juiz | Coordenação | Só as categorias do convite | Dias do evento |
+| Público | — | Placar, sem login | — |
+
+O acesso é **por pessoa, não por escola**, para que a auditoria registre quem fez cada ação. Em produção, a entrada é sem senha (link ou código de uso único por e-mail), num provedor de identidade comum aos 3 módulos (ex.: Keycloak). Cada módulo guarda as próprias permissões numa tabela de vínculos (usuário, papel, edição, escola ou categorias, validade).
 
 ## Regras implementadas
 
@@ -52,7 +66,7 @@ O botão ↺ no topo reinicia a demo.
 
 ## Limitações
 
-- Não há persistência nem autenticação real. O perfil é trocado pela barra superior, só para a demo.
+- Não há persistência nem autenticação real: a entrada e os convites são simulados.
 - Pesos das subcategorias, critérios do Seguidor de Linha e tamanho de equipe do Estoura Balão, dos ArtBots e da Tecnologia Educacional são **suposições** marcadas na tela como “a confirmar no edital”.
 - A regra de desempate não está definida: no empate, o juiz indica o vencedor e justifica.
 

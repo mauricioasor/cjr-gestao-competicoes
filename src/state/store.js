@@ -1,9 +1,10 @@
 // Estado da demo + regras de negócio. Em produção, cada ação vira um endpoint da API REST
 // e cada registro de auditoria/evento sai da mesma transação (padrão outbox).
-import { AUDITORIA, AVALIACOES, CATEGORIAS, EDICAO, EQUIPES, ESCOLAS, EVENTOS, USERS, totalPonderado } from '../data/seed.js'
+import { ACESSOS_ESCOLAS, ACESSOS_JUIZES, AUDITORIA, AVALIACOES, CATEGORIAS, EDICAO, EQUIPES, ESCOLAS, EVENTOS, USERS, totalPonderado } from '../data/seed.js'
 
 export const initialState = () => ({
-  role: 'coord',
+  role: null, // sessão: null = tela de entrada
+  acessos: { escolas: structuredClone(ACESSOS_ESCOLAS), juizes: structuredClone(ACESSOS_JUIZES) },
   edicao: EDICAO,
   escolas: ESCOLAS,
   categorias: structuredClone(CATEGORIAS),
@@ -30,7 +31,7 @@ const emitir = (s, tipo, payload) => ({
   eventos: [{ id: nid('evt'), tipo, direcao: 'saida', origem: 'Desafio 02', destino: 'Desafio 03 · Histórico Público', em: agora(), status: 'entregue', payload }, ...s.eventos],
 })
 
-const ator = (s) => USERS[s.role].nome
+const ator = (s) => USERS[s.role]?.nome || 'Sistema'
 
 // --- regras de elegibilidade (RN05) --------------------------------------
 const anoNum = (ano) => (ano === 'EJA' || ano === 'Professor' ? null : parseInt(ano, 10))
@@ -130,7 +131,33 @@ const payloadResultado = (state, av) => {
 export function reducer(state, action) {
   switch (action.type) {
     case 'RESET': return { ...initialState(), role: state.role }
-    case 'SET_ROLE': return { ...state, role: action.role }
+    case 'LOGIN': {
+      const u = USERS[action.role]
+      const s = { ...state, role: action.role }
+      return action.role === 'publico' ? s : audit(s, u.nome, 'Entrou pelo link de acesso', 'Acesso', u.papel, u.escopo)
+    }
+    case 'LOGOUT': return { ...state, role: null }
+
+    case 'INVITE_SCHOOL': {
+      const { escolaId, responsavel, email } = action
+      const esc = state.escolas.find((e) => e.id === escolaId)
+      const s = { ...state, acessos: { ...state.acessos, escolas: state.acessos.escolas.map((a) => (a.escolaId === escolaId ? { ...a, responsavel, email, status: 'enviado' } : a)) } }
+      return audit(s, ator(state), 'Enviou convite de acesso', 'Acesso', esc.nome, `${responsavel} · válido só para a escola na edição ${state.edicao.ano}`)
+    }
+    case 'INVITE_JUDGE': {
+      const { nome, email, categorias } = action
+      const s = { ...state, acessos: { ...state.acessos, juizes: [...state.acessos.juizes, { id: nid('usr-juiz'), nome, email, categorias, status: 'enviado' }] } }
+      const nomes = categorias.map((c) => state.categorias.find((x) => x.id === c)?.nome).join(', ')
+      return audit(s, ator(state), 'Convidou juiz', 'Acesso', nome, `Escopo: ${nomes} · expira ao fim do evento`)
+    }
+    case 'REVOKE': {
+      const { tipo, id } = action
+      let alvo
+      const acessos = tipo === 'escola'
+        ? { ...state.acessos, escolas: state.acessos.escolas.map((a) => { if (a.escolaId !== id) return a; alvo = state.escolas.find((e) => e.id === id)?.nome; return { ...a, status: 'revogado' } }) }
+        : { ...state.acessos, juizes: state.acessos.juizes.map((j) => { if (j.id !== id) return j; alvo = j.nome; return { ...j, status: 'revogado' } }) }
+      return audit({ ...state, acessos }, ator(state), 'Revogou acesso', 'Acesso', alvo, 'O histórico de ações dessa pessoa continua na auditoria')
+    }
 
     case 'PUBLISH_RULES': {
       const { categoriaId, subcategorias, motivo } = action
