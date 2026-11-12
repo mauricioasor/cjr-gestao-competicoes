@@ -4,7 +4,7 @@
 
 **Duração-alvo: 4 min 35 s.** O limite é 5 min, então sobram 25 s de folga.
 
-**Slides:** `docs/pitch/Sumula-Digital-CJR-pitch.pdf`. São 11 slides de apresentação e um apêndice só para as perguntas.
+**Slides:** `docs/pitch/Sumula-Digital-CJR-pitch.pdf`. São 12 slides de apresentação, terminando no slide de agradecimento com o QR code do projeto. O apêndice para as perguntas fica em um arquivo separado, `docs/pitch/Sumula-Digital-CJR-apendice.pdf`.
 
 **Frase que a banca deve lembrar:** *"Nenhuma nota perdida. Quem lança não homologa, e nenhuma correção apaga a anterior."*
 
@@ -20,7 +20,7 @@
 | Henrique Engeler de Morais | 4 e 5 | Escola: login e inscrição | 0:55 |
 | Calebe Henrique Hogrefe | 6 | Juiz: nota no celular | 0:30 |
 | Thiago Soethe | 7 e 8 | Comissão: homologação e correção | 0:55 |
-| Gabriel Henrique Pereira | 9 a 11 | Telão, ecossistema e encerramento | 1:10 |
+| Gabriel Henrique Pereira | 9 a 12 | Telão, ecossistema e encerramento | 1:10 |
 
 Na troca de apresentador, quem sai já chama o próximo: *"...e o Henrique mostra como a escola entra."* Assim não sobra silêncio.
 
@@ -61,7 +61,7 @@ Na troca de apresentador, quem sai já chama o próximo: *"...e o Henrique mostr
 **Slide 8 · Correção e auditoria · 2:55–3:25**
 > "E se alguém errar depois de homologado? Um resultado oficial nunca é editado. A correção exige um motivo e gera a versão 2. Tudo fica na trilha de auditoria: quem corrigiu, quando, por quê, e o valor antes e depois, aqui de 87,5 para 82,5. Nada pode ser editado ou apagado."
 
-### Fechamento · slides 9 a 11 · 1:10 · Gabriel
+### Fechamento · slides 9 a 12 · 1:10 · Gabriel
 
 **Slide 9 · Telão · 3:25–3:50**
 > "No dia do evento, o placar no telão mostra só resultados homologados. Nota pendente nunca aparece para o público. E o contador avisa quanto falta para a próxima categoria começar, então todo mundo no ginásio sabe o que vem a seguir."
@@ -70,9 +70,12 @@ Na troca de apresentador, quem sai já chama o próximo: *"...e o Henrique mostr
 **Slide 10 · Ecossistema · 3:50–4:10**
 > "E o nosso sistema conversa com os outros dois desafios, como rodas diferentes do mesmo carro: recebemos a edição e as escolas da Gestão do Evento e entregamos ao Histórico Público só o que foi homologado, inclusive as correções."
 
-**Slide 11 · Encerramento · 4:10–4:35**
-> "Com a Súmula Digital, aquela equipe do ano passado não teria ficado sem nota. Inscrição validada, nota registrada na hora e resultado oficial rastreável. Os próximos passos são o back-end real, o modo offline do juiz e as regras oficiais do edital. Usamos IA como apoio na análise, no código e no roteiro, e a equipe revisou tudo. Obrigado!"
-*(Deixem este slide na tela durante as perguntas.)*
+**Slide 11 · Encerramento · 4:10–4:30**
+> "Com a Súmula Digital, aquela equipe do ano passado não teria ficado sem nota. Inscrição validada, nota registrada na hora e resultado oficial rastreável. Os próximos passos são o back-end real, o modo offline do juiz e as regras oficiais do edital. Usamos IA como apoio na análise, no código e no roteiro, e a equipe revisou tudo."
+
+**Slide 12 · Obrigado e QR code · 4:30–4:35**
+> "Obrigado! O QR code na tela leva ao projeto, para quem quiser conferir."
+*(Deixem este slide na tela durante as perguntas, para a banca escanear o QR code. Se precisarem mostrar alguma tela extra, abram o PDF do apêndice.)*
 
 ---
 
@@ -87,7 +90,7 @@ Deixem o protótipo aberto em outra aba **para as perguntas**. Se a banca pedir 
 3. "Trocar de conta" → Ana → Homologação → "Homologar e publicar".
 4. Placar público → Modo telão.
 
-Se algo travar, diga *"vou mostrar pelo slide"* e volte ao PDF.
+Se algo travar, diga *"vou mostrar pelo slide"* e volte ao PDF do apêndice.
 
 ---
 
@@ -117,7 +120,8 @@ Se não souber: *"Ainda não testamos isso; entraria no backlog."* Não invente.
 
 ## 5. Antes de subir ao palco
 
-- [ ] PDF aberto em tela cheia e uma cópia em pen drive (funciona sem internet).
+- [ ] PDF aberto em tela cheia, PDF do apêndice aberto em outra janela e uma cópia dos dois em pen drive (funcionam sem internet).
+- [ ] Escanear o QR code do slide 12 e conferir que abre o projeto sem pedir login.
 - [ ] Protótipo aberto em outra aba, na tela de entrada, tema claro, dados reiniciados (botão ↺).
 - [ ] Notificações desligadas e carregador conectado.
 - [ ] Cronômetro com quem passa os slides. Sinais combinados: **1:05** = Henrique, **2:00** = Calebe, **2:30** = Thiago, **3:25** = Gabriel, **4:30** = encerrar.

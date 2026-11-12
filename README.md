@@ -44,7 +44,8 @@ O botão ↺ no topo reinicia os dados da demo.
 
 ## Apresentação
 
-- **Slides:** [`docs/pitch/Sumula-Digital-CJR-pitch.pdf`](docs/pitch/Sumula-Digital-CJR-pitch.pdf). São 11 slides para 5 minutos (Súmula Digital do CJR) e um apêndice para as perguntas.
+- **Slides:** [`docs/pitch/Sumula-Digital-CJR-pitch.pdf`](docs/pitch/Sumula-Digital-CJR-pitch.pdf). São 12 slides para 5 minutos (Súmula Digital do CJR), terminando com o agradecimento e o QR code do projeto.
+- **Apêndice para as perguntas:** [`docs/pitch/Sumula-Digital-CJR-apendice.pdf`](docs/pitch/Sumula-Digital-CJR-apendice.pdf).
 - **Roteiro de treino:** [`docs/ROTEIRO-PITCH.md`](docs/ROTEIRO-PITCH.md) (também em [PDF](docs/ROTEIRO-PITCH.pdf)), com fala e tempo de cada slide, plano da demo, perguntas da banca e plano de ensaio.
 - **Principais telas:** [`docs/telas/`](docs/telas/).
 
