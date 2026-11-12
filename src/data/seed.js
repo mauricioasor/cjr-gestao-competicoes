@@ -31,7 +31,7 @@ export const ESCOLAS = [
 export const USERS = {
   coord: { id: 'usr-coord-07', nome: 'Ana Ribeiro', papel: 'Coordenação do CJR', email: 'ana.ribeiro@sed.example.gov.br', escopo: '7º CJR · todas as categorias' },
   juiz: { id: 'usr-juiz-12', nome: 'Carlos Menezes', papel: 'Juiz voluntário', email: 'carlos.menezes@example.com', escopo: 'Estoura Balão, Robótica Lego, Seguidor de Linha', categorias: ['estoura-balao', 'robotica-lego', 'seguidor-linha'] },
-  prof: { id: 'usr-prof-31', nome: 'Prof.ª Júlia Prado', papel: 'Professora responsável', escolaId: 'esc-02', email: 'julia.prado@escola.example.gov.br', escopo: 'EM Jardim das Araucárias · 7º CJR' },
+  prof: { id: 'esc-02-direcao', nome: 'EM Jardim das Araucárias', papel: 'Login da escola · direção', escolaId: 'esc-02', inep: '4209-0002', email: 'direcao.araucarias@escola.example.gov.br', escopo: 'Só a própria escola · 7º CJR' },
   publico: { id: 'publico', nome: 'Público', papel: 'Placar aberto, sem login' },
 }
 export const OUTRO_JUIZ = { id: 'usr-juiz-04', nome: 'Beatriz Lima' }

@@ -30,7 +30,7 @@ React 18, Tailwind CSS 3, ícones Lucide e Vite 5 (com `vite-plugin-singlefile`)
 
 ## Roteiro da demo (cerca de 2 min)
 
-0. **Tela de entrada:** escolha uma conta de demonstração e clique em "Enviar link de acesso" e depois em "Abrir link de acesso". Não há senha: o acesso é um link enviado ao e-mail convidado (simulado).
+0. **Tela de entrada:** na aba **Escola**, entre com o código INEP e o e-mail da direção (já preenchidos). Na aba **Secretaria e juízes**, escolha uma conta e use o link de acesso (simulado).
 1. **Ana (Coordenação) → Configuração:** em Robótica Lego, mude um peso, escreva o motivo e publique a v2.
 2. **Acessos:** veja as escolas convidadas para a edição e convide um juiz só para as categorias que ele vai avaliar.
 3. **Inscrições → Nova inscrição:** o aluno do 5º ano é bloqueado em Seguidor de Linha (que exige do 6º ao 9º). Troque para 6º e confirme.
@@ -44,7 +44,7 @@ O botão ↺ no topo reinicia os dados da demo.
 
 ## Apresentação
 
-- **Slides:** [`docs/pitch/CJR-Gestao-Competicoes-pitch.pdf`](docs/pitch/CJR-Gestao-Competicoes-pitch.pdf). São 15 slides para 5 minutos e um apêndice para as perguntas.
+- **Slides:** [`docs/pitch/Sumula-Digital-CJR-pitch.pdf`](docs/pitch/Sumula-Digital-CJR-pitch.pdf). São 11 slides para 5 minutos (Súmula Digital do CJR) e um apêndice para as perguntas.
 - **Roteiro de treino:** [`docs/ROTEIRO-PITCH.md`](docs/ROTEIRO-PITCH.md), com fala e tempo de cada slide, plano da demo, perguntas da banca e plano de ensaio.
 - **Principais telas:** [`docs/telas/`](docs/telas/).
 
@@ -65,11 +65,11 @@ O placar público e o modo telão mostram a categoria em disputa, a próxima cat
 | --- | --- | --- | --- |
 | Super Admin (Secretaria) | Implantação | Todas as edições | Permanente |
 | Coordenação | Super Admin | A edição | Por edição |
-| Professor responsável | Coordenação, um convite por escola | Só a própria escola | Encerra com a edição |
+| Escola (login único da direção) | Secretaria, a partir da lista oficial; a direção ativa pelo convite | Só a própria escola | Encerra com a edição |
 | Juiz | Coordenação | Só as categorias do convite | Dias do evento |
 | Público | — | Placar, sem login | — |
 
-O acesso é **por pessoa, não por escola**, para que a auditoria registre quem fez cada ação. Em produção, a entrada é sem senha (link ou código de uso único por e-mail), num provedor de identidade comum aos 3 módulos (ex.: Keycloak). Cada módulo guarda as próprias permissões numa tabela de vínculos (usuário, papel, edição, escola ou categorias, validade).
+Cada escola tem **um login único**, ligado ao código INEP e ao e-mail institucional da direção, sem cadastro aberto. Coordenação e juízes entram por convite individual, com link de uso único. Em produção, o login fica num provedor de identidade comum aos 3 módulos (ex.: Keycloak). Cada módulo guarda as próprias permissões numa tabela de vínculos (usuário, papel, edição, escola ou categorias, validade).
 
 ## Regras implementadas
 

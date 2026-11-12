@@ -75,12 +75,12 @@ export default function Acessos() {
     <div>
       <PageHeader eyebrow={`Edição ${state.edicao.ano} · convites e permissões`} title="Acessos da edição"
         actions={aba === 'juizes' && <Button icon={UserPlus} onClick={() => setConvJuiz(true)}>Convidar juiz</Button>}>
-        As escolas vêm cadastradas pela Secretaria. A cada edição, a coordenação convida um responsável por escola e os juízes, cada um com o seu escopo.
+        As escolas vêm cadastradas pela Secretaria. A cada edição, a coordenação envia o convite de cada escola à direção e convida os juízes, cada um com o seu escopo.
       </PageHeader>
 
       <div className="mb-5 grid gap-3 md:grid-cols-3">
         {[
-          [KeyRound, 'Acesso por pessoa, não por escola', 'Cada ação fica registrada com o nome de quem fez.'],
+          [KeyRound, 'Uma conta por escola, ligada à direção', 'Sem cadastro aberto: a direção ativa pelo convite.'],
           [School, 'Escopo por escola ou categoria', 'O professor vê só a escola; o juiz, só as suas categorias.'],
           [Clock3, 'Validade por edição', 'O vínculo expira no fim da edição e pode ser revogado antes.'],
         ].map(([I, t, d]) => (

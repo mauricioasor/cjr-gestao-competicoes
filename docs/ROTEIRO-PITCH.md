@@ -1,92 +1,122 @@
-# Roteiro do pitch: Gestão das Competições do CJR (Desafio 02)
+# Roteiro do pitch: Súmula Digital do CJR (Desafio 02)
 
-**Duração-alvo: 4 min 35 s.** O limite é 5 min, então sobram 25 s de folga para respirar, para uma troca de apresentador ou para um clique lento.
+**Duração-alvo: 4 min 35 s.** O limite é 5 min, então sobram 25 s de folga.
 
-**Arquivo dos slides:** `docs/pitch/CJR-Gestao-Competicoes-pitch.pdf`. São 15 slides de apresentação e 12 de apêndice, este último só para as perguntas.
+**Slides:** `docs/pitch/Sumula-Digital-CJR-pitch.pdf`. São 11 slides de apresentação e um apêndice só para as perguntas.
 
-**Frase que a banca deve lembrar:** *"Quem lança não homologa. Só o homologado é publicado."*
+**Frase que a banca deve lembrar:** *"Nenhuma nota perdida. Quem lança não homologa, e nenhuma correção apaga a anterior."*
 
----
-
-## 1. Divisão da equipe
-
-| Quem | Slides | Tempo |
-| --- | --- | --- |
-| [Apresentador 1] | 1 a 5: abertura, dor, proposta, fluxo, acessos | 1:40 |
-| [Apresentador 2] | 6 a 12: telas do sistema (ou demo ao vivo) | 2:00 |
-| [Apresentador 3] | 13 a 15: arquitetura, impacto e fechamento | 0:55 |
-| [Integrante 4] | Passa os slides e opera a demo; segura o cronômetro | — |
-
-Na troca de apresentador, quem sai diz a primeira palavra do próximo bloco, por exemplo: "...e agora a [Nome] mostra o sistema funcionando." Assim não sobra silêncio.
+> **Antes de ensaiar:** a abertura conta que "no ano passado, uma equipe ficou sem nota". Confirmem que o caso é real e que vocês sabem contá-lo. Se a banca perguntar e não for, a história derruba a credibilidade do pitch. Se não puderem confirmar, troquem por: *"Imagine que uma equipe fique sem nota porque o papel se perdeu."*
 
 ---
 
-## 2. Roteiro slide a slide
+## 1. Quem fala o quê
 
-| # | Tempo | Slide | O que falar | Na tela |
-| --- | --- | --- | --- | --- |
-| 1 | 0:00–0:10 | Capa | "Boa tarde. Somos a equipe [nome] e trabalhamos no Desafio 02, a Gestão das Competições do Campeonato Joinvilense de Robótica." | — |
-| 2 | 0:10–0:40 | A dor | "Em 2021 o campeonato tinha 28 alunos e 7 equipes. Na 6ª edição foram 69 equipes de 35 escolas, em 7 categorias. A apuração continua predominantemente manual, e o próprio briefing pergunta: quem homologa um resultado? Qual regra valeu em cada edição? O que foi publicado é o oficial?" | Apontar os três quadros amarelos |
-| 3 | 0:40–1:00 | Proposta | Pausa curta. Depois, devagar: "Quem lança não homologa. Só o homologado é publicado." Então: "O juiz lança, a coordenação homologa, toda regra e toda correção viram versão, e o placar e o Histórico usam uma única fonte." | Olhar para a banca, não para o telão |
-| 4 | 1:00–1:20 | Fluxo | "Todo resultado faz este caminho. O passo 4, a homologação, é o único portão de saída. Nota errada antes de publicar volta ao juiz. Erro depois de publicar vira nova versão, com motivo." | Apontar o quadro azul "Homologa" |
-| 5 | 1:20–1:40 | Acessos | "As escolas já vêm cadastradas pela Secretaria. A cada edital, a coordenação convida um responsável por escola e os juízes, cada um com o seu escopo. O acesso é da pessoa, não da escola: a auditoria sabe quem fez cada ação. E sem senha: o link chega no e-mail." | — |
-| 6 | 1:40–1:50 | Entrada | "Cada conta mostra o seu escopo. Vou entrar como a coordenação." | — |
-| 7 | 1:50–2:10 | Inscrições | "O professor inscreve a equipe e o sistema valida na hora: este aluno do 5º ano não pode jogar Seguidor de Linha, que é do 6º ao 9º. Ele vê o motivo e quantos integrantes faltam, antes do dia do evento." | Apontar a mensagem em vermelho |
-| 8 | 2:10–2:30 | Juiz | "O juiz está na arena, com o celular. No Estoura Balão, ele marca os balões de cada round com botões grandes e o vencedor é calculado. Enviar não é publicar: a nota fica aguardando homologação." | Apontar o celular |
-| 9 | 2:30–2:50 | Homologação | "Aqui a coordenação vê quem lançou, quando e com qual regra. Quem lançou não consegue homologar. Só ao homologar o resultado vai para o placar e para o Histórico Público." | Pausa de 2 s depois de "Só ao homologar" |
-| 10 | 2:50–3:05 | Correção | "Resultado publicado não é editado. A correção mostra o valor anterior, exige motivo e vira a versão 2. A versão 1 fica na auditoria." | — |
-| 11 | 3:05–3:30 | Placar | "O placar público mostra só homologados, com selo quando houve correção. E o contador mostra quanto falta para a próxima categoria começar: no ginásio, todo mundo sabe o que vem a seguir." | O contador à direita está rodando ao vivo |
-| 12 | 3:30–3:40 | Responsivo | "Funciona no computador, no tablet e no celular, com tema claro ou escuro e um botão para aumentar o texto." | — |
-| 13 | 3:40–4:00 | Arquitetura | "Não cadastramos escolas: são dado do Desafio 01, e duplicar criaria a divergência que queremos evitar. Quando um resultado é homologado, sai um evento com versão para o Histórico Público, do Desafio 03. Cada desafio é dono do seu dado." | — |
-| 14 | 4:00–4:20 | Impacto | "O estudante vê o resultado oficial na hora. O professor inscreve sem surpresa. A Secretaria ganha histórico confiável e auditoria para qualquer contestação. O campeonato passou de 28 para mais de 300 estudantes: nesse tamanho, confiança é saber de onde veio cada ponto." | — |
-| 15 | 4:20–4:35 | Próximos passos | "Os próximos passos são o back-end real e o login único com os outros desafios. Usamos o Claude como apoio, e a equipe revisou tudo e responde pelas entregas. Obrigado, ficamos à disposição." | Deixar este slide durante as perguntas |
+| Quem | Slides | Bloco | Tempo |
+| --- | --- | --- | --- |
+| [Integrante 1] | 1 a 3 | Abertura: capa, problema, solução | 1:05 |
+| [Integrante 2] | 4 e 5 | Escola: login e inscrição | 0:55 |
+| [Integrante 3] | 6 a 8 | Juiz e comissão: nota, homologação, correção | 1:25 |
+| [Integrante 4] | 9 a 11 | Telão, ecossistema e encerramento | 1:10 |
+
+Na troca de apresentador, quem sai já chama o próximo: *"...e o [Nome] mostra como a escola entra."* Assim não sobra silêncio.
+
+---
+
+## 2. Fala completa, slide a slide
+
+### Abertura · slides 1 a 3 · 1:05 · [Integrante 1]
+
+**Slide 1 · Capa · 0:00–0:10**
+> "Boa noite. Nós somos [nomes] e vamos apresentar a Súmula Digital do CJR: um sistema que acompanha cada equipe da inscrição da escola até o resultado oficial, sem nenhuma nota perdida."
+
+**Slide 2 · O problema · 0:10–0:40**
+> "No ano passado, uma equipe ficou sem nota." *(pausa de 2 s)*
+> "Os juízes anotaram as notas no papel e foram embora. O papel se perdeu. Na hora do resultado, ninguém sabia a nota daquela equipe. Isso acontece porque inscrições, regras e resultados de 69 equipes de 35 escolas, em 7 categorias, ainda vivem no papel. O nosso sistema existe para isso não acontecer de novo."
+
+**Slide 3 · A solução · 0:40–1:05**
+> "A solução é um fluxo só, em três passos. A escola inscreve pelo próprio login e o sistema aplica as regras do edital na hora. O juiz lança a nota no celular, e ela fica salva com nome e horário. E a comissão homologa: só o que foi homologado vira oficial. A nossa regra de ouro: quem lança a nota não a homologa, e nenhuma correção apaga a versão anterior. Vamos ver isso funcionando."
+
+### Escola · slides 4 e 5 · 0:55 · [Integrante 2]
+
+**Slide 4 · Login da escola · 1:05–1:30**
+> "Tudo começa pela escola. Cada escola da rede tem um único login, com o código INEP e o e-mail institucional da direção. Não existe cadastro aberto: a Secretaria cria a conta a partir da lista oficial e a direção ativa pelo convite. Depois de entrar, a escola só vê e só inscreve as próprias equipes."
+
+**Slide 5 · Inscrição · 1:30–2:00**
+> "Na inscrição, o edital vira regra. Cada categoria tem a sua faixa de ano escolar e o seu tamanho de equipe. Olhem o aviso em vermelho: esse aluno é do 5º ano, e o Seguidor de Linha aceita só do 6º ao 9º. O sistema barra na hora e o botão de confirmar fica bloqueado. Hoje essa conferência é feita à mão. E, pensando na LGPD, guardamos só as iniciais e o ano escolar de cada aluno."
+
+### Juiz e comissão · slides 6 a 8 · 1:25 · [Integrante 3]
+
+**Slide 6 · Painel do juiz · 2:00–2:30**
+> "Agora o juiz. Ele avalia pelo próprio celular, com botões grandes e uma nota de 0 a 10 para cada critério. À esquerda, ele dá as notas e o total é calculado com os pesos da regra. À direita, revisa e envia. A nota fica salva na hora, com o nome do juiz e o horário. Lembram da história do início? O juiz foi embora? A nota continua lá."
+
+**Slide 7 · Homologação · 2:30–2:55**
+> "Mas a nota do juiz ainda não é oficial. Quem lança a nota não pode homologá-la: o próprio sistema garante isso. A comissão revisa e tem duas opções: homologar, e aí o resultado vira oficial, ou devolver ao juiz, sempre com o motivo."
+
+**Slide 8 · Correção e auditoria · 2:55–3:25**
+> "E se alguém errar depois de homologado? Um resultado oficial nunca é editado. A correção exige um motivo e gera a versão 2. Tudo fica na trilha de auditoria: quem corrigiu, quando, por quê, e o valor antes e depois, aqui de 87,5 para 82,5. Nada pode ser editado ou apagado."
+
+### Fechamento · slides 9 a 11 · 1:10 · [Integrante 4]
+
+**Slide 9 · Telão · 3:25–3:50**
+> "No dia do evento, o placar no telão mostra só resultados homologados. Nota pendente nunca aparece para o público. E o contador avisa quanto falta para a próxima categoria começar, então todo mundo no ginásio sabe o que vem a seguir."
+*(O contador à direita roda ao vivo durante a fala.)*
+
+**Slide 10 · Ecossistema · 3:50–4:10**
+> "E o nosso sistema conversa com os outros dois desafios, como rodas diferentes do mesmo carro: recebemos a edição e as escolas da Gestão do Evento e entregamos ao Histórico Público só o que foi homologado, inclusive as correções."
+
+**Slide 11 · Encerramento · 4:10–4:35**
+> "Com a Súmula Digital, aquela equipe do ano passado não teria ficado sem nota. Inscrição validada, nota registrada na hora e resultado oficial rastreável. Os próximos passos são o back-end real, o modo offline do juiz e as regras oficiais do edital. Usamos IA como apoio na análise, no código e no roteiro, e a equipe revisou tudo. Obrigado!"
+*(Deixem este slide na tela durante as perguntas.)*
 
 ---
 
 ## 3. Demo ao vivo ou só slides?
 
-**Recomendado: só slides.** Os slides 6 a 12 já mostram o sistema real, em alta resolução, e cabem nos 5 minutos sem risco de rede ou de clique errado.
+**Recomendado: só slides.** Os slides 4 a 9 já são as telas reais do protótipo, recortadas e ampliadas para o telão, e cabem nos 5 minutos sem risco de rede ou de clique errado.
 
-**Demo ao vivo** só se a equipe fizer os slides 6 a 12 em **até 2:00** em três ensaios seguidos. Nesse caso, siga esta ordem:
+Deixem o protótipo aberto em outra aba **para as perguntas**. Se a banca pedir para ver funcionando:
 
-1. Entrada → Ana → "Enviar link de acesso" → "Abrir link de acesso".
-2. Inscrições → "Nova inscrição" → mostrar o bloqueio do 5º ano → trocar para 6º → "Confirmar inscrição".
-3. Chaveamento → "Sortear chave".
-4. "Trocar de conta" → Carlos → primeiro duelo → marcar balões → "Enviar para homologação".
-5. "Trocar de conta" → Ana → Homologação → "Homologar e publicar" no duelo.
-6. Placar público → Estoura Balão: o vencedor avança na chave.
+1. Entrada → aba **Escola** → "Entrar como EM Jardim das Araucárias" → Nova inscrição (bloqueio do 5º ano).
+2. "Trocar de conta" → **Secretaria e juízes** → Carlos → Robótica Lego → NeuroBlocos → notas → Enviar.
+3. "Trocar de conta" → Ana → Homologação → "Homologar e publicar".
+4. Placar público → Modo telão.
 
-Se algo travar, diga *"vou mostrar pelo slide"* e avance. Não tente consertar na frente da banca.
+Se algo travar, diga *"vou mostrar pelo slide"* e volte ao PDF.
 
 ---
 
-## 4. Antes de subir ao palco
+## 4. Perguntas prováveis da banca
 
-- [ ] PDF dos slides aberto em tela cheia e uma cópia em pen drive (funciona sem internet).
-- [ ] Protótipo aberto em outra aba, na tela de entrada, com **tema claro**. Clicar no ↺ para reiniciar os dados.
-- [ ] Zoom do navegador em 125% se o telão for muito grande (o botão **A+** também ajuda).
-- [ ] Notificações do computador desligadas e carregador conectado.
-- [ ] Cronômetro visível para quem passa os slides, com sinais combinados: **2:00** = início das telas, **3:40** = arquitetura, **4:30** = encerrar.
-- [ ] Nome da equipe e integrantes preenchidos na capa e no último slide.
+Respostas de até duas frases. Responde quem apresentou aquela parte.
 
----
-
-## 5. Perguntas prováveis da banca
-
-| Pergunta | Resposta curta | Slide de apoio |
+| Pergunta | Resposta | Apoio |
 | --- | --- | --- |
-| E se o juiz errar a nota? | Antes da homologação, a coordenação devolve com motivo. Depois, só por correção, que vira nova versão. | Fluxo · Correção |
-| E se uma escola contestar? | A auditoria mostra quem lançou, quem homologou, quem corrigiu e o motivo. Nada é apagado. | Apêndice · Auditoria |
-| Por que não cadastrar as escolas? | A escola é dado mestre do Desafio 01. Duplicar gera divergência, que é o problema que resolvemos. | Arquitetura |
-| Por que não um login por escola? | Senha compartilhada apaga da auditoria quem fez cada ação. O acesso é por pessoa, com escopo da escola. | Acessos · Apêndice · Acessos |
-| E os dados dos alunos (LGPD)? | Guardamos só iniciais e ano escolar. O placar nunca mostra nome de aluno. A demo usa só dados fictícios. | Apêndice · Viabilidade |
-| E se a internet cair no ginásio? | O envio da nota é idempotente. O modo offline do celular do juiz é o próximo passo do backlog. | Próximos passos |
-| Escala para mais escolas? | API REST e placar em cache. Cada edição convive no mesmo banco com regras próprias. | Apêndice · Viabilidade |
+| E se o navegador do juiz fechar? | No protótipo os dados ficam só na memória. O primeiro item do backlog é a API com banco de dados, e o modo offline guarda a nota no celular até ter rede. | Slide 11 |
+| Como a escola recebe o login? | A Secretaria cria a conta a partir da lista oficial da rede e manda o convite ao e-mail institucional da direção. Não existe cadastro aberto. | Slide 4 |
+| Login por escola não perde quem fez cada ação? | A conta é ligada ao e-mail institucional da direção, então a auditoria registra a escola e o responsável. Juízes e comissão têm acesso individual. | Slide 4 |
+| A banca não tem três juízes? | Sim. O sistema já guarda quem lançou cada nota; somar as notas da banca e avisar empate está no backlog. | Slide 6 |
+| E se a regra mudar no ano que vem? | As regras são versionadas por edição. Os resultados de 2026 continuam calculados pela regra de 2026. | Apêndice · Configuração |
+| E se uma escola contestar? | A auditoria mostra quem lançou, quem homologou, quem corrigiu e o motivo. Nada é apagado. | Slide 8 · Apêndice · Auditoria |
+| Por que não cadastrar as escolas? | A escola é dado mestre do Desafio 01. Duplicar criaria divergência, que é justamente o problema que resolvemos. | Slide 10 |
+| Por que não fizeram todas as categorias? | O modelo já suporta as 7, inclusive duelos do Estoura Balão. As diferenças são configuração, não código novo. | Apêndice · Categorias |
+| Como o sorteio é justo? | A comissão sorteia com uma semente registrada; com a mesma semente, qualquer pessoa refaz a chave. | Apêndice · Chaveamento |
 | Os pesos são os oficiais? | Ainda não: são provisórios, editáveis e versionados. Entram os do edital assim que for publicado. | Apêndice · Configuração |
-| Como o sorteio é justo? | A coordenação sorteia com uma semente registrada; com a mesma semente, qualquer pessoa refaz a chave. | Apêndice · Chaveamento |
-| Usaram IA? | Sim, o Claude, como apoio na análise, no código e no roteiro. A equipe revisou e entende cada parte. | Próximos passos |
+| Funciona no celular? | Sim: computador, tablet, celular e telão, com tema claro e escuro e botão para aumentar o texto. | Apêndice · Responsivo |
+| Que tecnologias usaram? | React, Tailwind e Vite, com as regras isoladas em um arquivo para virar uma API REST com PostgreSQL. | Apêndice · Viabilidade |
+| Onde usaram IA? | Na análise do briefing, em parte do código, nos slides e no roteiro. A equipe revisou tudo e entende cada parte. | Slide 11 |
 
-Regra de ouro: responda em uma frase, mostre o slide do apêndice e pare. Se não souber, diga: "não testamos isso ainda; entraria no backlog."
+Se não souber: *"Ainda não testamos isso; entraria no backlog."* Não invente.
+
+---
+
+## 5. Antes de subir ao palco
+
+- [ ] Nomes na capa, no lugar de `[Nomes dos integrantes]`.
+- [ ] PDF aberto em tela cheia e uma cópia em pen drive (funciona sem internet).
+- [ ] Protótipo aberto em outra aba, na tela de entrada, tema claro, dados reiniciados (botão ↺).
+- [ ] Notificações desligadas e carregador conectado.
+- [ ] Cronômetro com quem passa os slides. Sinais combinados: **1:05** = troca para a escola, **2:00** = juiz, **3:25** = telão, **4:30** = encerrar.
 
 ---
 
@@ -94,22 +124,22 @@ Regra de ouro: responda em uma frase, mostre o slide do apêndice e pare. Se nã
 
 | Ensaio | Foco | Meta |
 | --- | --- | --- |
-| 1 | Ler o roteiro em voz alta, com cronômetro | Saber onde estoura o tempo |
+| 1 | Ler a fala em voz alta, com cronômetro | Saber onde estoura o tempo |
 | 2 | Falar sem ler, só olhando os slides | ≤ 5:00 |
-| 3 | Trocas entre apresentadores e sinais do cronômetro | ≤ 4:45 |
-| 4 | Ensaio completo com 3 perguntas surpresa de colegas | ≤ 4:40 e respostas em até 20 s |
-| 5 | No dia, no telão ou em uma TV grande, se possível | Conferir se a última fileira consegue ler |
+| 3 | Trocas entre apresentadores e sinais | ≤ 4:45 |
+| 4 | Ensaio completo com 3 perguntas surpresa | ≤ 4:40, respostas em até 20 s |
+| 5 | Em uma TV grande ou projetor | Conferir a leitura da última fileira |
 
-**Como a banca avalia** (Regulamento, seção 8) e onde cada critério aparece:
+**Como a banca avalia** (Regulamento, seção 8):
 
 | Critério | Peso | Onde mostramos |
 | --- | --- | --- |
 | Compreensão do problema | 20% | Slides 2 e 3 |
-| Impacto | 20% | Slide 14 |
-| Viabilidade técnica | 15% | Slide 13 e apêndice |
-| Qualidade e coerência da solução | 15% | Slides 4, 9 e 10 |
-| UX e acessibilidade | 10% | Slides 7, 8 e 12 |
-| Engenharia, documentação e interoperabilidade | 10% | Slide 13, README e este roteiro |
-| Pitch e demonstração | 10% | Tempo, clareza e o momento da homologação |
+| Impacto | 20% | Slides 2, 6 e 11: a história da nota perdida resolvida |
+| Viabilidade técnica | 15% | Slide 10 e apêndice |
+| Qualidade e coerência | 15% | Slides 7 e 8 |
+| UX e acessibilidade | 10% | Slides 4 a 6 e 9 |
+| Engenharia, documentação e interoperabilidade | 10% | Slide 10, README e este roteiro |
+| Pitch e demonstração | 10% | Tempo, clareza e a virada da história |
 
 A leitura dos pesos foi feita a partir de uma foto desalinhada do regulamento. Confirmem os valores com a organização.
