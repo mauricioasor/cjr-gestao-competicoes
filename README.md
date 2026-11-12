@@ -45,7 +45,7 @@ O botão ↺ no topo reinicia os dados da demo.
 ## Apresentação
 
 - **Slides:** [`docs/pitch/Sumula-Digital-CJR-pitch.pdf`](docs/pitch/Sumula-Digital-CJR-pitch.pdf). São 11 slides para 5 minutos (Súmula Digital do CJR) e um apêndice para as perguntas.
-- **Roteiro de treino:** [`docs/ROTEIRO-PITCH.md`](docs/ROTEIRO-PITCH.md), com fala e tempo de cada slide, plano da demo, perguntas da banca e plano de ensaio.
+- **Roteiro de treino:** [`docs/ROTEIRO-PITCH.md`](docs/ROTEIRO-PITCH.md) (também em [PDF](docs/ROTEIRO-PITCH.pdf)), com fala e tempo de cada slide, plano da demo, perguntas da banca e plano de ensaio.
 - **Principais telas:** [`docs/telas/`](docs/telas/).
 
 ## Acessibilidade e responsividade
@@ -100,6 +100,10 @@ Cada escola tem **um login único**, ligado ao código INEP e ao e-mail instituc
 ## Dados e LGPD
 
 Todos os dados são fictícios. O placar mostra equipe e escola, nunca nomes de estudantes. O módulo guarda só as iniciais e o ano escolar.
+
+## Equipe
+
+Maurício da Rosa Ventura, Henrique Engeler de Morais, Calebe Henrique Hogrefe, Thiago Soethe e Gabriel Henrique Pereira.
 
 ## Uso de IA
 

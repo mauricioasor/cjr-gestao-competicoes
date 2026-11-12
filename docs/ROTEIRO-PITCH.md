@@ -1,5 +1,7 @@
 # Roteiro do pitch: Súmula Digital do CJR (Desafio 02)
 
+**Equipe:** Maurício da Rosa Ventura, Henrique Engeler de Morais, Calebe Henrique Hogrefe, Thiago Soethe e Gabriel Henrique Pereira.
+
 **Duração-alvo: 4 min 35 s.** O limite é 5 min, então sobram 25 s de folga.
 
 **Slides:** `docs/pitch/Sumula-Digital-CJR-pitch.pdf`. São 11 slides de apresentação e um apêndice só para as perguntas.
@@ -14,21 +16,22 @@
 
 | Quem | Slides | Bloco | Tempo |
 | --- | --- | --- | --- |
-| [Integrante 1] | 1 a 3 | Abertura: capa, problema, solução | 1:05 |
-| [Integrante 2] | 4 e 5 | Escola: login e inscrição | 0:55 |
-| [Integrante 3] | 6 a 8 | Juiz e comissão: nota, homologação, correção | 1:25 |
-| [Integrante 4] | 9 a 11 | Telão, ecossistema e encerramento | 1:10 |
+| Maurício da Rosa Ventura | 1 a 3 | Abertura: capa, problema, solução | 1:05 |
+| Henrique Engeler de Morais | 4 e 5 | Escola: login e inscrição | 0:55 |
+| Calebe Henrique Hogrefe | 6 | Juiz: nota no celular | 0:30 |
+| Thiago Soethe | 7 e 8 | Comissão: homologação e correção | 0:55 |
+| Gabriel Henrique Pereira | 9 a 11 | Telão, ecossistema e encerramento | 1:10 |
 
-Na troca de apresentador, quem sai já chama o próximo: *"...e o [Nome] mostra como a escola entra."* Assim não sobra silêncio.
+Na troca de apresentador, quem sai já chama o próximo: *"...e o Henrique mostra como a escola entra."* Assim não sobra silêncio.
 
 ---
 
 ## 2. Fala completa, slide a slide
 
-### Abertura · slides 1 a 3 · 1:05 · [Integrante 1]
+### Abertura · slides 1 a 3 · 1:05 · Maurício
 
 **Slide 1 · Capa · 0:00–0:10**
-> "Boa noite. Nós somos [nomes] e vamos apresentar a Súmula Digital do CJR: um sistema que acompanha cada equipe da inscrição da escola até o resultado oficial, sem nenhuma nota perdida."
+> "Boa noite. Nós somos Maurício, Henrique, Calebe, Thiago e Gabriel e vamos apresentar a Súmula Digital do CJR: um sistema que acompanha cada equipe da inscrição da escola até o resultado oficial, sem nenhuma nota perdida."
 
 **Slide 2 · O problema · 0:10–0:40**
 > "No ano passado, uma equipe ficou sem nota." *(pausa de 2 s)*
@@ -37,7 +40,7 @@ Na troca de apresentador, quem sai já chama o próximo: *"...e o [Nome] mostra 
 **Slide 3 · A solução · 0:40–1:05**
 > "A solução é um fluxo só, em três passos. A escola inscreve pelo próprio login e o sistema aplica as regras do edital na hora. O juiz lança a nota no celular, e ela fica salva com nome e horário. E a comissão homologa: só o que foi homologado vira oficial. A nossa regra de ouro: quem lança a nota não a homologa, e nenhuma correção apaga a versão anterior. Vamos ver isso funcionando."
 
-### Escola · slides 4 e 5 · 0:55 · [Integrante 2]
+### Escola · slides 4 e 5 · 0:55 · Henrique
 
 **Slide 4 · Login da escola · 1:05–1:30**
 > "Tudo começa pela escola. Cada escola da rede tem um único login, com o código INEP e o e-mail institucional da direção. Não existe cadastro aberto: a Secretaria cria a conta a partir da lista oficial e a direção ativa pelo convite. Depois de entrar, a escola só vê e só inscreve as próprias equipes."
@@ -45,10 +48,12 @@ Na troca de apresentador, quem sai já chama o próximo: *"...e o [Nome] mostra 
 **Slide 5 · Inscrição · 1:30–2:00**
 > "Na inscrição, o edital vira regra. Cada categoria tem a sua faixa de ano escolar e o seu tamanho de equipe. Olhem o aviso em vermelho: esse aluno é do 5º ano, e o Seguidor de Linha aceita só do 6º ao 9º. O sistema barra na hora e o botão de confirmar fica bloqueado. Hoje essa conferência é feita à mão. E, pensando na LGPD, guardamos só as iniciais e o ano escolar de cada aluno."
 
-### Juiz e comissão · slides 6 a 8 · 1:25 · [Integrante 3]
+### Juiz · slide 6 · 0:30 · Calebe
 
 **Slide 6 · Painel do juiz · 2:00–2:30**
 > "Agora o juiz. Ele avalia pelo próprio celular, com botões grandes e uma nota de 0 a 10 para cada critério. À esquerda, ele dá as notas e o total é calculado com os pesos da regra. À direita, revisa e envia. A nota fica salva na hora, com o nome do juiz e o horário. Lembram da história do início? O juiz foi embora? A nota continua lá."
+
+### Comissão · slides 7 e 8 · 0:55 · Thiago
 
 **Slide 7 · Homologação · 2:30–2:55**
 > "Mas a nota do juiz ainda não é oficial. Quem lança a nota não pode homologá-la: o próprio sistema garante isso. A comissão revisa e tem duas opções: homologar, e aí o resultado vira oficial, ou devolver ao juiz, sempre com o motivo."
@@ -56,7 +61,7 @@ Na troca de apresentador, quem sai já chama o próximo: *"...e o [Nome] mostra 
 **Slide 8 · Correção e auditoria · 2:55–3:25**
 > "E se alguém errar depois de homologado? Um resultado oficial nunca é editado. A correção exige um motivo e gera a versão 2. Tudo fica na trilha de auditoria: quem corrigiu, quando, por quê, e o valor antes e depois, aqui de 87,5 para 82,5. Nada pode ser editado ou apagado."
 
-### Fechamento · slides 9 a 11 · 1:10 · [Integrante 4]
+### Fechamento · slides 9 a 11 · 1:10 · Gabriel
 
 **Slide 9 · Telão · 3:25–3:50**
 > "No dia do evento, o placar no telão mostra só resultados homologados. Nota pendente nunca aparece para o público. E o contador avisa quanto falta para a próxima categoria começar, então todo mundo no ginásio sabe o que vem a seguir."
@@ -112,11 +117,10 @@ Se não souber: *"Ainda não testamos isso; entraria no backlog."* Não invente.
 
 ## 5. Antes de subir ao palco
 
-- [ ] Nomes na capa, no lugar de `[Nomes dos integrantes]`.
 - [ ] PDF aberto em tela cheia e uma cópia em pen drive (funciona sem internet).
 - [ ] Protótipo aberto em outra aba, na tela de entrada, tema claro, dados reiniciados (botão ↺).
 - [ ] Notificações desligadas e carregador conectado.
-- [ ] Cronômetro com quem passa os slides. Sinais combinados: **1:05** = troca para a escola, **2:00** = juiz, **3:25** = telão, **4:30** = encerrar.
+- [ ] Cronômetro com quem passa os slides. Sinais combinados: **1:05** = Henrique, **2:00** = Calebe, **2:30** = Thiago, **3:25** = Gabriel, **4:30** = encerrar.
 
 ---
 
