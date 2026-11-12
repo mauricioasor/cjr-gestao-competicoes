@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Mail, ArrowLeft, Link2, ShieldCheck, Trophy, KeyRound, CheckCircle2 } from 'lucide-react'
 import { useApp } from '../App.jsx'
 import { Button, cx } from '../components/ui.jsx'
+import Preferencias from '../components/Preferencias.jsx'
 import { USERS } from '../data/seed.js'
 
 const CONTAS = ['coord', 'prof', 'juiz']
@@ -9,31 +10,32 @@ const mascarar = (email) => email.replace(/^(.)(.*)(@.*)$/, (_, a, b, c) => `${a
 
 // Entrada sem senha: o link de acesso chega por e-mail (simulado no protótipo).
 export default function Entrada() {
-  const { dispatch } = useApp()
+  const { dispatch, prefs, setPrefs } = useApp()
   const [sel, setSel] = useState('prof')
   const [enviado, setEnviado] = useState(false)
   const u = USERS[sel]
 
   return (
     <div className="grid min-h-screen bg-bg lg:grid-cols-[1fr_minmax(0,560px)]">
-      <aside className="flex flex-col justify-between gap-10 bg-[#142033] py-10 text-[#F4F6FA] lg:py-16" style={{ paddingLeft: 'max(24px, env(safe-area-inset-left, 0px))', paddingRight: 'max(24px, env(safe-area-inset-right, 0px))' }}>
+      <aside className="flex flex-col justify-between gap-10 bg-[#142033] py-6 text-[#F4F6FA] lg:py-16" style={{ paddingLeft: 'max(24px, env(safe-area-inset-left, 0px))', paddingRight: 'max(24px, env(safe-area-inset-right, 0px))' }}>
         <div className="mx-auto w-full max-w-[560px]">
           <div className="flex items-center gap-3">
             <svg width="40" height="40" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 28 9.25v13.5L16 29.5 4 22.75V9.25z" fill="#194E91" /><path d="M16 9.5 22 13v6l-6 3.5-6-3.5v-6z" fill="none" stroke="#F4F6FA" strokeWidth="2" /><circle cx="16" cy="16" r="2" fill="#F4F6FA" /></svg>
             <p className="font-display text-xl font-semibold">CJR · Gestão das Competições</p>
           </div>
-          <h1 className="mt-10 font-display text-[40px] font-semibold leading-[1.05] sm:text-[52px]">7º Campeonato Joinvilense de Robótica</h1>
-          <p className="mt-4 max-w-[46ch] text-[16px] leading-relaxed text-[#C9D6E8]">Acesso por pessoa, criado por convite para cada edição. A escola já vem cadastrada pela Secretaria. O professor só enxerga a própria escola, e o juiz só as categorias que avalia.</p>
+          <h1 className="mt-4 font-display text-[28px] font-semibold leading-[1.05] sm:mt-10 sm:text-[52px]">7º Campeonato Joinvilense de Robótica</h1>
+          <p className="mt-4 hidden max-w-[46ch] text-[16px] leading-relaxed text-[#C9D6E8] sm:block">Acesso por pessoa, criado por convite para cada edição. A escola já vem cadastrada pela Secretaria. O professor só enxerga a própria escola, e o juiz só as categorias que avalia.</p>
         </div>
-        <ul className="mx-auto grid w-full max-w-[560px] gap-3 text-[14px] text-[#DCE6F4]">
+        <ul className="mx-auto hidden w-full max-w-[560px] gap-3 text-[14px] text-[#DCE6F4] sm:grid">
           <li className="flex items-start gap-2"><KeyRound size={18} className="mt-0.5 shrink-0 text-[#8FB4E6]" />Sem senha: link de acesso enviado ao e-mail convidado.</li>
           <li className="flex items-start gap-2"><ShieldCheck size={18} className="mt-0.5 shrink-0 text-[#8FB4E6]" />O acesso expira ao fim da edição e pode ser revogado a qualquer momento.</li>
           <li className="flex items-start gap-2"><CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[#8FB4E6]" />Cada entrada e cada ação ficam registradas com o nome da pessoa.</li>
         </ul>
       </aside>
 
-      <main className="flex items-center py-10" style={{ paddingLeft: 'max(16px, env(safe-area-inset-left, 0px))', paddingRight: 'max(16px, env(safe-area-inset-right, 0px))' }}>
+      <main className="flex items-center py-6 sm:py-10" style={{ paddingLeft: 'max(16px, env(safe-area-inset-left, 0px))', paddingRight: 'max(16px, env(safe-area-inset-right, 0px))' }}>
         <div className="mx-auto w-full max-w-[460px]">
+          <div className="mb-6 flex justify-end"><Preferencias prefs={prefs} setPrefs={setPrefs} /></div>
           <p className="mb-1 inline-block rounded bg-warn-soft px-2 py-0.5 text-[11.5px] font-semibold text-warn">Protótipo · contas fictícias</p>
           <h2 className="font-display text-[30px] font-semibold">Entrar</h2>
 

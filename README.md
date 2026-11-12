@@ -25,7 +25,8 @@ React 18, Tailwind CSS 3, ícones Lucide e Vite 5 (com `vite-plugin-singlefile`)
 | `src/data/seed.js` | Edição, escolas, 7 categorias, equipes e avaliações **fictícias** |
 | `src/state/store.js` | Regras de negócio: elegibilidade, sorteio com semente, chave derivada, ranking, homologação, correção, auditoria e eventos |
 | `src/views/` | Telas: Visão geral, Configuração, Inscrições, Chaveamento, Painel do juiz, Homologação, Auditoria, Integrações e Placar público |
-| `src/components/` | Componentes de UI e a chave eliminatória |
+| `src/components/` | Componentes de UI, chave eliminatória, contador da próxima categoria e preferências (tema e texto grande) |
+| `docs/` | Slides do pitch em PDF, roteiro de apresentação e principais telas |
 
 ## Roteiro da demo (cerca de 2 min)
 
@@ -37,9 +38,26 @@ React 18, Tailwind CSS 3, ícones Lucide e Vite 5 (com `vite-plugin-singlefile`)
 5. **Trocar de conta → Carlos (Juiz):** ele só vê as 3 categorias do convite. Lance os balões de um duelo e envie.
 6. **Trocar de conta → Ana → Homologação:** homologue. O placar e a chave mudam, e o evento aparece em Integrações.
 7. **Corrigir** um resultado homologado: o motivo é obrigatório e a v2 aparece na Auditoria.
-8. **Placar público → Modo telão.**
+8. **Placar público:** confira o contador da próxima categoria e abra o Modo telão.
 
 O botão ↺ no topo reinicia os dados da demo.
+
+## Apresentação
+
+- **Slides:** [`docs/pitch/CJR-Gestao-Competicoes-pitch.pdf`](docs/pitch/CJR-Gestao-Competicoes-pitch.pdf). São 15 slides para 5 minutos e um apêndice para as perguntas.
+- **Roteiro de treino:** [`docs/ROTEIRO-PITCH.md`](docs/ROTEIRO-PITCH.md), com fala e tempo de cada slide, plano da demo, perguntas da banca e plano de ensaio.
+- **Principais telas:** [`docs/telas/`](docs/telas/).
+
+## Acessibilidade e responsividade
+
+- O layout se adapta a celular, tablet, computador e telão. No celular, o ranking mostra a escola abaixo do nome da equipe.
+- Os botões **Claro/Escuro** e **A+** (texto 15% maior) ficam no topo e na tela de entrada. A escolha fica salva no navegador.
+- Alvos de toque têm 44 px. Há link "Pular para o conteúdo", foco visível, navegação por teclado e rótulos em todos os campos.
+- Todo status aparece com texto e ícone, nunca só por cor.
+
+## Contador do placar
+
+O placar público e o modo telão mostram a categoria em disputa, a próxima categoria e uma contagem regressiva até o início dela, com barra de progresso. No último minuto, o contador muda para âmbar. A agenda do dia é fictícia e fica em `src/state/store.js`.
 
 ## Modelo de acesso
 

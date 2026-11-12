@@ -16,6 +16,7 @@ import Integracoes from './views/Integracoes.jsx'
 import Placar from './views/Placar.jsx'
 import Entrada from './views/Entrada.jsx'
 import Acessos from './views/Acessos.jsx'
+import Preferencias, { aplicarPrefs, carregarPrefs } from './components/Preferencias.jsx'
 
 const Ctx = createContext(null)
 export const useApp = () => useContext(Ctx)
@@ -53,6 +54,8 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, undefined, initialState)
   const [view, setView] = useState('painel')
   const [toast, setToast] = useState(null)
+  const [prefs, setPrefs] = useState(carregarPrefs)
+  useEffect(() => { aplicarPrefs(prefs) }, [prefs])
 
   const notify = useCallback((msg) => {
     setToast({ msg, k: Date.now() })
@@ -66,7 +69,7 @@ export default function App() {
   useEffect(() => { if (state.role) setView(NAV[state.role][0]) }, [state.role])
 
   if (!state.role) {
-    return <Ctx.Provider value={{ state, dispatch, notify, go: setView }}><Entrada /></Ctx.Provider>
+    return <Ctx.Provider value={{ state, dispatch, notify, go: setView, prefs, setPrefs }}><Entrada /></Ctx.Provider>
   }
   const nav = NAV[state.role]
   const current = nav.includes(view) ? view : nav[0]
@@ -75,27 +78,29 @@ export default function App() {
   const user = USERS[state.role]
 
   return (
-    <Ctx.Provider value={{ state, dispatch, notify, go: setView }}>
+    <Ctx.Provider value={{ state, dispatch, notify, go: setView, prefs, setPrefs }}>
       <div className="min-h-screen bg-bg">
+        <a href="#conteudo" className="sr-only z-50 rounded bg-primary px-4 py-2 font-semibold text-primary-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Pular para o conteúdo</a>
         <header className="sticky top-0 z-30 border-b border-line bg-surface/95 backdrop-blur" style={{ top: 'env(safe-area-inset-top, 0px)' }}>
           <div className="mx-auto flex max-w-[1320px] flex-wrap items-center gap-x-4 gap-y-2 py-2.5" style={{ paddingLeft: 'max(16px, env(safe-area-inset-left, 0px))', paddingRight: 'max(16px, env(safe-area-inset-right, 0px))' }}>
             <div className="flex min-w-0 items-center gap-2.5">
               <Logo />
               <div className="min-w-0 leading-tight">
                 <p className="truncate font-display text-[17px] font-semibold">CJR · Gestão das Competições</p>
-                <p className="truncate text-[12px] text-muted">{state.edicao.nome} · Secretaria de Educação de Joinville</p>
+                <p className="hidden truncate text-[12px] text-muted sm:block">{state.edicao.nome} · Secretaria de Educação de Joinville</p>
               </div>
             </div>
-            <span className="hidden rounded bg-warn-soft px-2 py-0.5 text-[11.5px] font-semibold text-warn md:inline">Protótipo · dados fictícios</span>
+            <span className="hidden rounded bg-warn-soft px-2 py-0.5 text-[11.5px] font-semibold text-warn 2xl:inline">Protótipo · dados fictícios</span>
             <div className="ml-auto flex items-center gap-2">
-              <div className="hidden text-right leading-tight sm:block">
+              <div className="hidden text-right leading-tight xl:block">
                 <p className="text-[13px] font-semibold">{user.nome}</p>
                 <p className="text-[11.5px] text-muted">{user.escopo || user.papel}</p>
               </div>
-              <button onClick={() => dispatch({ type: 'LOGOUT' })} className="flex items-center gap-1.5 rounded-md border border-line bg-surface px-2.5 py-1.5 text-[12.5px] font-semibold text-ink hover:bg-sunken">
-                {state.role === 'publico' ? <><LogIn size={15} />Entrar</> : <><LogOut size={15} />Trocar de conta</>}
+              <Preferencias prefs={prefs} setPrefs={setPrefs} />
+              <button onClick={() => dispatch({ type: 'LOGOUT' })} aria-label={state.role === 'publico' ? 'Entrar' : 'Trocar de conta'} className="flex h-11 items-center gap-1.5 rounded-md border border-line bg-surface px-2.5 text-[13px] font-semibold text-ink hover:bg-sunken">
+                {state.role === 'publico' ? <><LogIn size={17} /><span className="hidden sm:inline">Entrar</span></> : <><LogOut size={17} /><span className="hidden sm:inline">Trocar de conta</span></>}
               </button>
-              <button onClick={() => { dispatch({ type: 'RESET' }); notify('Demo reiniciada com os dados iniciais') }} className="rounded-md p-2 text-muted hover:bg-sunken hover:text-ink" title="Reiniciar demo" aria-label="Reiniciar demo">
+              <button onClick={() => { dispatch({ type: 'RESET' }); notify('Demo reiniciada com os dados iniciais') }} className="grid h-11 w-11 place-items-center rounded-md text-muted hover:bg-sunken hover:text-ink" title="Reiniciar demo" aria-label="Reiniciar demo">
                 <RotateCcw size={17} />
               </button>
             </div>
@@ -117,7 +122,7 @@ export default function App() {
                 return (
                   <li key={k} className="shrink-0">
                     <button onClick={() => setView(k)} aria-current={active ? 'page' : undefined}
-                      className={cx('flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-left text-[14px] font-medium transition',
+                      className={cx('flex min-h-11 w-full items-center gap-2.5 rounded-md px-3 py-2 text-left text-[15px] font-medium transition',
                         active ? 'bg-primary-soft text-primary' : 'text-ink hover:bg-sunken')}>
                       <V.icon size={17} aria-hidden="true" />
                       <span className="whitespace-nowrap">{V.label}</span>
@@ -130,7 +135,7 @@ export default function App() {
               })}
             </ul>
           </nav>
-          <main className="min-w-0 flex-1" key={current + state.role}>
+          <main id="conteudo" tabIndex={-1} className="min-w-0 flex-1 focus:outline-none" key={current + state.role}>
             <View />
           </main>
         </div>

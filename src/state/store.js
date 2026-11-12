@@ -15,6 +15,12 @@ export const initialState = () => ({
   auditoria: structuredClone(AUDITORIA),
   eventos: structuredClone(EVENTOS),
   ultimoPlacar: null,
+  // Agenda do dia (fictícia): a categoria atual e as próximas, para o contador do placar.
+  agenda: (() => {
+    const t0 = Date.now()
+    const ordem = ['robotica-lego', 'seguidor-linha', 'estoura-balao', 'atto-microbit', 'artbot-junior', 'artbot-expert', 'tec-educacional']
+    return ordem.map((categoriaId, i) => ({ categoriaId, inicio: i === 0 ? t0 - 25 * 60e3 : t0 + (5 + (i - 1) * 20) * 60e3 }))
+  })(),
 })
 
 const agora = () => new Date().toISOString()

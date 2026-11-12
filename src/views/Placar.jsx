@@ -3,6 +3,7 @@ import { Monitor, X, BadgeCheck, Clock3, Medal, Trophy, Play, Pause } from 'luci
 import { useApp } from '../App.jsx'
 import { Button, Card, Empty, PageHeader, StatusPill, cx, fmtHora } from '../components/ui.jsx'
 import Bracket from '../components/Bracket.jsx'
+import Contador from '../components/Contador.jsx'
 import { montarChave, ranking } from '../state/store.js'
 
 const MEDAL = ['text-[#B8860B]', 'text-[#8A939E]', 'text-[#A0612B]']
@@ -13,9 +14,9 @@ function Ranking({ state, cat, big }) {
   if (!linhas.length) return <Empty icon={Clock3} title="Nenhum resultado oficial ainda">Os resultados aparecem aqui assim que forem homologados.</Empty>
   return (
     <div className="overflow-x-auto">
-      <table className={cx('w-full text-left', big ? 'min-w-[640px] text-[20px]' : 'min-w-[560px] text-[14px]')}>
+      <table className={cx('w-full text-left', big ? 'min-w-[640px] text-[20px]' : 'text-[15px] sm:min-w-[560px]')}>
         <thead className={cx('uppercase tracking-wide text-muted', big ? 'text-[13px]' : 'text-[11.5px]')}>
-          <tr><th className="w-16 px-4 py-2 font-semibold">Pos.</th><th className="px-3 py-2 font-semibold">Equipe</th><th className="px-3 py-2 font-semibold">Escola</th><th className="px-4 py-2 text-right font-semibold">Pontos</th></tr>
+          <tr><th className="w-16 px-4 py-2 font-semibold">Pos.</th><th className="px-3 py-2 font-semibold">Equipe</th><th className="hidden px-3 py-2 font-semibold sm:table-cell">Escola</th><th className="px-4 py-2 text-right font-semibold">Pontos</th></tr>
         </thead>
         <tbody>
           {linhas.map((l) => (
@@ -28,8 +29,9 @@ function Ranking({ state, cat, big }) {
               <td className="px-3 py-3">
                 <span className="font-semibold">{l.equipe?.nome}</span>
                 {l.versao > 1 && <span className="ml-2 align-middle"><StatusPill status="homologado" versao={l.versao} /></span>}
+                <span className="block text-[13px] text-muted sm:hidden">{state.escolas.find((e) => e.id === l.equipe?.escolaId)?.nome}</span>
               </td>
-              <td className="px-3 py-3 text-muted">{state.escolas.find((e) => e.id === l.equipe?.escolaId)?.nome}</td>
+              <td className="hidden px-3 py-3 text-muted sm:table-cell">{state.escolas.find((e) => e.id === l.equipe?.escolaId)?.nome}</td>
               <td className={cx('px-4 py-3 text-right font-display font-semibold tnum', big ? 'text-[30px]' : 'text-[20px]')}>{l.total.toFixed(1)}</td>
             </tr>
           ))}
@@ -110,6 +112,7 @@ export default function Placar() {
               <Button variant="secondary" icon={X} onClick={() => setTelao(false)}>Sair do telão</Button>
             </div>
           </div>
+          <Contador agenda={state.agenda} categorias={state.categorias} big />
           <Tabs big />
           <Selo />
           <Card className="p-2 sm:p-4"><Conteudo state={state} cat={cat} big /></Card>
@@ -125,6 +128,7 @@ export default function Placar() {
         Mostra equipes e escolas, nunca nomes de estudantes. Os mesmos dados seguem para o Histórico Público.
       </PageHeader>
       <div className="flex flex-col gap-4">
+        <Contador agenda={state.agenda} categorias={state.categorias} />
         <Tabs />
         <Selo />
         <Card className="p-2 sm:p-4"><Conteudo state={state} cat={cat} /></Card>
